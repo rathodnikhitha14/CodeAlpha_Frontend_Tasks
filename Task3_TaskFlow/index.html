@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow - Manage Tasks</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f5f3ff}
+header{background:#7c3aed;color:white;padding:15px;text-align:center;font-size:22px}
+.addbox{max-width:800px;margin:20px auto;background:white;padding:15px;border-radius:12px;display:flex;gap:10px}
+.addbox input{flex:1;padding:12px;border:1px solid #ddd;border-radius:8px}
+.addbox button{background:#7c3aed;color:white;border:none;padding:12px 20px;border-radius:8px;cursor:pointer}
+.board{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:20px}
+.col{background:white;border-radius:12px;padding:15px;min-height:300px}
+.col h3{text-align:center;margin-bottom:15px;color:#7c3aed;border-bottom:2px solid #eee;padding-bottom:10px}
+.task{background:#ede9fe;padding:10px;border-radius:8px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.task button{border:none;background:#7c3aed;color:white;padding:5px 10px;border-radius:5px;cursor:pointer;margin-left:5px}
+.done{opacity:0.5;text-decoration:line-through}
+</style>
+</head>
+<body>
+<header>TaskFlow - My Tasks ✅</header>
+<div class="addbox">
+<input id="taskInput" placeholder="Add new task... Ex: Complete Ecommerce Project">
+<button onclick="addTask()">Add Task</button>
+</div>
+<div class="board">
+<div class="col"><h3>📝 To Do</h3><div id="todo"></div></div>
+<div class="col"><h3>⚙️ In Progress</h3><div id="progress"></div></div>
+<div class="col"><h3>✅ Done</h3><div id="done"></div></div>
+</div>
+<script>
+function addTask(){let v=document.getElementById('taskInput').value;if(!v)return;let d=document.createElement('div');d.className='task';d.innerHTML=`<span>${v}</span><div><button onclick="move(this,'progress')">▶️</button><button onclick="this.parentElement.parentElement.remove()">❌</button></div>`;document.getElementById('todo').appendChild(d);document.getElementById('taskInput').value=''}
+function move(btn,target){let t=btn.parentElement.parentElement;document.getElementById(target).appendChild(t);if(target==='done'){t.classList.add('done');btn.remove()}else if(target==='progress'){btn.setAttribute('onclick',"move(this,'done')");btn.innerText='✅'}}
+window.onload=()=>{let tasks=['Design Homepage','Add Cart Function','Test Website'];tasks.forEach(t=>{document.getElementById('taskInput').value=t;addTask()})}
+</script>
+</body>
+</html>
