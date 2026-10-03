@@ -1,1 +1,32 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShopEasy - Task 1</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+header{background:#7c3aed;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;position:sticky;top:0}
+.cart{background:#fff;color:#7c3aed;padding:5px 12px;border-radius:20px;font-weight:bold}
+.banner{background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;text-align:center;padding:25px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;padding:20px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #ddd}
+.card img{width:100%;height:140px;object-fit:cover}
+.info{padding:10px;text-align:center}
+.info h4{margin:5px 0}
+.info p{color:#7c3aed;font-weight:bold}
+.info button{background:#7c3aed;color:#fff;border:none;padding:8px 15px;border-radius:8px;width:100%;margin-top:5px}
+</style>
+</head>
+<body>
+<header><h3>ShopEasy 🛒</h3><div class="cart">Cart: <span id="c">0</span></div></header>
+<div class="banner"><h2>Big Sale 50% OFF</h2><p>Best products at lowest price</p></div>
+<div class="products">
+<div class="card"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"><div class="info"><h4>Watch</h4><p>₹2999</p><button onclick="add()">Add to Cart</button></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff"><div class="info"><h4>Shoes</h4><p>₹1999</p><button onclick="add()">Add to Cart</button></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e"><div class="info"><h4>Headphones</h4><p>₹1499</p><button onclick="add()">Add to Cart</button></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1525590409433-cfa59e1f7b1b"><div class="info"><h4>Bag</h4><p>₹899</p><button onclick="add()">Add to Cart</button></div></div>
+</div>
+<script>let x=0;function add(){x++;document.getElementById('c').innerText=x;}</script>
+</body>
+</html>
